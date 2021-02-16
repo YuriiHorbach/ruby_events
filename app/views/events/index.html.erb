@@ -1,0 +1,32 @@
+  
+<h1><%=pluralize(@events.size, 'Event') %></h1>
+
+<% @events.each do |event| %>
+  <article>
+    <h1><%= event.name %></h1>
+
+    <p><%= truncate(event.description, length: 10, sepatator:" ") %></p>
+
+    <table>
+      <tr>
+        <th>When:</th>
+        <td><%= event.start_at %></td>
+      </tr>
+
+      <tr>
+        <th>Where:</th>
+        <td><%= event.location %></td>
+      </tr>
+
+      <tr>
+        <th>Price:</th>
+        <% if event.price <= 0 %>
+          <td><%="Free"%></td>
+        <% else %>
+          <td><%=price_format(event)%></td>
+        <% end %>
+      </tr>
+    </table>
+    <hr>
+  </article>
+<% end %>

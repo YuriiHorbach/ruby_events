@@ -1,0 +1,18 @@
+<h1><%= @event.name %></h1>
+
+  <article>
+    <b><p>Description</p></></b>
+    <p><%= @event.description %></p>
+    <b><p>When:</p></b>
+    <p><%= @event.start_at %></p>
+    <b><p>Where:</p></b>
+    <p><%= @event.location %></p>
+    <b><p>Price:</p></b>
+    <p>
+        <% if @event.price <= 0 %>
+          <td><%="Free"%></td>
+        <% else %>
+          <td><%=price_format(@event)%></td>
+        <% end %>
+    </p>
+  </article>
